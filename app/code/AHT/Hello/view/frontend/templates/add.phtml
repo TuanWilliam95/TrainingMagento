@@ -1,0 +1,12 @@
+<h3>Add Action</h3>
+<p>This is add's data</p>
+<p>
+<?php
+	echo $data;
+	echo "<br/>";
+	$data= $block->getDemo();
+	foreach($data as $day){
+		echo $day." ";
+	}
+?>
+</p>

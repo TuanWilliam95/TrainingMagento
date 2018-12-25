@@ -2,6 +2,7 @@
 return array (
   'modules' => 
   array (
+    'AHT_Blog' => 1,
     'AHT_Hello' => 1,
     'Magento_Store' => 1,
     'Magento_AdvancedPricingImportExport' => 1,
