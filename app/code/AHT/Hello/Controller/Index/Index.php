@@ -14,6 +14,14 @@ class Index extends \Magento\Framework\App\Action\Action{
 	public function execute(){
 		/*echo "<h1>Hello Module - Index Controller - Index Action</h1>";
 		exit();*/
+		$model=$this->_objectManager->create("AHT\Hello\Model\DataExample");
+		$model->addData([
+			'title' => 'Tieu de 01',
+			'content' => 'noi dung 01',
+			'status' =>	true,
+			'sort_order' => 1
+		])->save();
+		exit();
 		return $this->_pageFactory->create();
 	}
 	public function getInfo(){

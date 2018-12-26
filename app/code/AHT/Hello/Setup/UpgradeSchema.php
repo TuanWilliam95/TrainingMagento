@@ -4,9 +4,9 @@ use Magento\Framework\Setup\SchemaSetupInterface;
 use Magento\Framework\Setup\ModuleContextInterface;
 use Magento\Framework\DB\Ddl\Table;
 
-class InstallSchema implements \Magento\Framework\Setup\InstallSchemaInterface{
+class UpgradeSchema implements \Magento\Framework\Setup\UpgradeSchemaInterface{
 
-	public function install(SchemaSetupInterface $setup, ModuleContextInterface $context){
+	public function upgrade(SchemaSetupInterface $setup, ModuleContextInterface $context){
 		$setup->startSetup();
 		$conn=$setup->getConnection();
 		$tableName=$setup->getTable('data_new_example');
@@ -32,6 +32,8 @@ class InstallSchema implements \Magento\Framework\Setup\InstallSchemaInterface{
 					)
 					->setOption('charset','utf8');
 			$conn->createTable($table);
+		}else{
+			$setup->run("ALTER TABLE ".$tableName." ADD COLUMN status BOOLEAN, ADD sort_order SMALLINT");
 		}
 		$setup->endSetup();
 	}
